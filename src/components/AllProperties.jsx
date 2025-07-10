@@ -132,10 +132,29 @@ const AllProperties = () => {
                   <span className="text-blue-600 font-bold text-xl">
                     ₹{prop.price}
                   </span>
+                    <span
+    className={`
+      text-xs font-semibold px-3 py-1 rounded-full
+      ${
+        prop.status === "available"
+          ? "bg-green-100 text-green-700"
+          : prop.status === "booked"
+          ? "bg-yellow-100 text-yellow-700"
+          : prop.status === "confirmed"
+          ? "bg-blue-100 text-blue-700"
+          : prop.status === "sold"
+          ? "bg-red-100 text-red-700"
+          : "bg-gray-200 text-gray-700"
+      }
+    `}
+  >
+    {prop.status || "Unknown"}
+  </span>
                   <button className="text-blue-600 border border-blue-300 px-4 py-1 rounded-md text-sm hover:bg-blue-50">
                     View Details
                   </button>
                 </div>
+                
               </div>
             </div>
           ))}

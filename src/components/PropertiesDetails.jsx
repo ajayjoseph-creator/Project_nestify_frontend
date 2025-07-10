@@ -44,6 +44,23 @@ const PropertyDetails = () => {
       </h1>
       <p className="text-blue-600 text-xl mt-2">₹{property.price}</p>
 
+      {/* 🔥 Property Status Badge */}
+<p
+  className={`inline-block mt-2 px-3 py-1 rounded-full text-sm font-medium 
+    ${
+      property.status === "available"
+        ? "bg-green-900 text-white"
+        : property.status === "booked"
+        ? "bg-yellow-900 text-white"
+        : property.status === "confirmed"
+        ? "bg-blue-100 text-blue-700"
+        : "bg-red-100 text-red-700"
+    }`}
+>
+  {property.status.charAt(0).toUpperCase() + property.status.slice(1)}
+</p>
+
+
       {/* Owner Info */}
       {property.owner && (
         <div

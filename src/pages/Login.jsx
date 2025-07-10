@@ -21,10 +21,15 @@ const Login = () => {
   const { user, error, loading } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    if (user) {
+  if (user) {
+    console.log("🔍 Logged in user:", user); // 👉 Check this in browser console
+    if (user.isAdmin) {
+      navigate("/admin/dashboard");
+    } else {
       navigate("/");
     }
-  }, [user, navigate]);
+  }
+}, [user]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

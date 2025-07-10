@@ -1,9 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  FaBed,
-  FaBath,
-  FaRulerCombined,
-} from "react-icons/fa";
+import { FaBed, FaBath, FaRulerCombined, FaInfoCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import GlitchText from "./ui/Glitch";
@@ -13,9 +9,11 @@ const FeaturedProperties = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { featuredProperties: properties, loading, error } = useSelector(
-    (state) => state.property
-  );
+  const {
+    featuredProperties: properties,
+    loading,
+    error,
+  } = useSelector((state) => state.property);
 
   useEffect(() => {
     dispatch(fetchFeaturedProperties());
@@ -43,7 +41,9 @@ const FeaturedProperties = () => {
       </div>
 
       {/* 🔁 Loading / Error States */}
-      {loading && <p className="text-center text-gray-500">Loading properties...</p>}
+      {loading && (
+        <p className="text-center text-gray-500">Loading properties...</p>
+      )}
       {error && <p className="text-center text-red-500">Error: {error}</p>}
 
       {/* 🏠 Property Cards */}
@@ -80,18 +80,55 @@ const FeaturedProperties = () => {
                   <FaRulerCombined className="text-gray-500" />
                   {prop.size || 0} sqft
                 </div>
+
+
+
+
+                <div className="flex items-center gap-2">
+                  <FaInfoCircle className="text-gray-500" />
+                  <span>Status:</span>
+                  {/* 🔽 Insert the badge here */}
+                  {/** 👆👆 👇👇 **/}
+                  <span
+                    className={`
+      px-2 py-1 text-xs font-semibold rounded-full
+      ${
+        prop.status === "available"
+          ? "bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-200"
+          : prop.status === "booked"
+          ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-800 dark:text-yellow-200"
+          : prop.status === "confirmed"
+          ? "bg-blue-100 text-blue-700 dark:bg-blue-800 dark:text-blue-200"
+          : prop.status === "sold"
+          ? "bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-200"
+          : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-300"
+      }
+    `}
+                  >
+                    {prop.status || "Unknown"}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
 
+
+      
+
       {/* Pagination Buttons */}
       <div className="flex justify-center mt-10">
         <div className="flex space-x-2">
-          <button className="w-8 h-8 rounded border border-purple-300 text-purple-600 hover:bg-purple-100">1</button>
-          <button className="w-8 h-8 rounded border border-purple-300 text-purple-600 hover:bg-purple-100">2</button>
-          <button className="w-8 h-8 rounded border border-purple-300 text-purple-600 hover:bg-purple-100">›</button>
+          <button className="w-8 h-8 rounded border border-purple-300 text-purple-600 hover:bg-purple-100">
+            1
+          </button>
+          <button className="w-8 h-8 rounded border border-purple-300 text-purple-600 hover:bg-purple-100">
+            2
+          </button>
+          <button className="w-8 h-8 rounded border border-purple-300 text-purple-600 hover:bg-purple-100">
+            ›
+          </button>
         </div>
       </div>
     </div>

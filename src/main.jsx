@@ -12,6 +12,7 @@ import App from './App.jsx';
 import { store } from './app/Store.js';
 
 const CLIENTID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+console.log("Google Client ID:", CLIENTID);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -19,7 +20,7 @@ createRoot(document.getElementById('root')).render(
       <GoogleOAuthProvider clientId={CLIENTID}>
         <AuthProvider>
           <BrowserRouter>
-            <App />
+           <App/>
           </BrowserRouter>
         </AuthProvider>
       </GoogleOAuthProvider>

@@ -14,6 +14,7 @@ import Home_Main_image from "../assets/Home_Page_Main_Image.png";
 import GlitchText from "./ui/Glitch";
 import { useNavigate } from "react-router-dom";
 import FeaturedProperties from "./FeaturedProperties";
+import RollingGallery from "../ReactBits/RollingGallery ";
 
 const HomePage = () => {
   const leftRef = useRef(null);
@@ -108,9 +109,14 @@ const HomePage = () => {
       </div>
       <FeaturedProperties/>
 
+  {/* <div className="w-full max-w-8xl mx-auto my-9 p-4 bg-white shadow-xl rounded-xl border">
+  <RollingGallery autoplay={true} pauseOnHover={true}  />
+</div> */}
+
       {/* Info Section */}
       <div className="py-20 px-6 md:px-24 bg-white grid md:grid-cols-2 gap-12 items-center">
         {/* Left Content with Scroll Animation */}
+        
         <motion.div
           ref={leftRef}
           initial={{ opacity: 0, y: 40 }}
@@ -120,6 +126,8 @@ const HomePage = () => {
         >
           <h5 className="text-blue-600 uppercase font-semibold tracking-wider">
             Who we are?
+        
+
           </h5>
           <h2 className="text-4xl font-bold leading-snug">
             The Experts In Property

@@ -14,13 +14,21 @@ import Sell from "./components/Sell";
 import OwnerProfile from "./components/OwnerProfile";
 import ChatRoomModal from "./components/ChatRoomModal";
 import OwnerInbox from "./components/OwnerInbox";
-import About from "./components/About";
-import ImageTrail from "./components/About";
+import AboutPage from "./components/About";
+import EditProperty from "./pages/EditProperty";
+import AdminDashboard from "./components/admin/Dashboard";
+import AdminLayout from "./components/admin/AdminLayout";
+import Users from "./components/admin/Users";
+import Products from "./components/admin/Products";
+import AdminRoute from "./components/admin/AdminRoute";
+import ProtectedAdminRoute from "./components/admin/ProtectedAdminRoute";
+
 
 const App = () => {
   const location = useLocation(); // ✅ this brings pathname
-  const hideNavbarPaths = ['/login', '/register', '/test'];
-  const shouldHideNavbar = hideNavbarPaths.includes(location.pathname);
+ const hideNavbarPaths = ['/login', '/register'];
+const isAdminPath = location.pathname.startsWith('/admin');
+const shouldHideNavbar = hideNavbarPaths.includes(location.pathname) || isAdminPath;
 
   return (
     <>
@@ -48,7 +56,29 @@ const App = () => {
         <Route path='/sell' element={<Sell/>}/>
         <Route path="/profile/:id" element={<OwnerProfile />} />
         <Route path='/owner/inbox' element={<OwnerInbox/>}/>
-        <Route path='/about' element={<ImageTrail/>}/>
+        <Route path='/about' element={<AboutPage/>}/>
+        <Route path="/property/edit/:id" element={<EditProperty />} />
+      
+      
+        
+
+         {/* All admin pages under AdminLayout with Sidebar */}
+      <Route
+  path="/admin"
+  element={
+    <ProtectedAdminRoute>
+      <AdminLayout />
+    </ProtectedAdminRoute>
+  }
+>
+  <Route index element={<AdminDashboard />} />
+  <Route path="dashboard" element={<AdminDashboard />} />
+  <Route path="users" element={<Users />} />
+  <Route path="products" element={<Products />} />
+</Route>
+      
+        
+
       </Routes>
 
       {/* {user && (
