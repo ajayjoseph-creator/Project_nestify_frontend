@@ -17,7 +17,7 @@ const OwnerInbox = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          `http://localhost:5000/api/messages/conversations/${owner._id}`,
+          `https://project-nestify-backend.onrender.com/api/messages/conversations/${owner._id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setConversations(res.data);

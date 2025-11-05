@@ -7,7 +7,7 @@ export const fetchOwnerById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`http://localhost:5000/api/users/${id}`, {
+      const res = await axios.get(`https://project-nestify-backend.onrender.com/api/users/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -23,7 +23,7 @@ export const fetchOwnerProperties = createAsyncThunk(
   "owner/fetchOwnerProperties",
   async (ownerId, { rejectWithValue }) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/property/owner/${ownerId}`);
+      const res = await axios.get(`https://project-nestify-backend.onrender.com/api/property/owner/${ownerId}`);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || err.message);

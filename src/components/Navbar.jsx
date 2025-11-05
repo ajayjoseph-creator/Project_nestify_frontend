@@ -55,7 +55,7 @@ const Navbar = () => {
     const fetchUser = async () => {
       try {
         if (!token) return;
-        const res = await fetch("http://localhost:5000/api/users/profile", {
+        const res = await fetch("https://project-nestify-backend.onrender.com/api/users/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

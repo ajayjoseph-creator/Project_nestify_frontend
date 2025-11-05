@@ -34,10 +34,10 @@ const ChatRoomModal = ({ isOpen, senderId, receiverId, onClose }) => {
     const fetchAvatars = async () => {
       try {
         const [senderRes, receiverRes] = await Promise.all([
-          axios.get(`http://localhost:5000/api/users/${actualSenderId}`, {
+          axios.get(`https://project-nestify-backend.onrender.com/api/users/${actualSenderId}`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get(`http://localhost:5000/api/users/${receiverId}`, {
+          axios.get(`https://project-nestify-backend.onrender.com/api/users/${receiverId}`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -65,7 +65,7 @@ const ChatRoomModal = ({ isOpen, senderId, receiverId, onClose }) => {
     const fetchMessages = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`http://localhost:5000/api/messages/${roomId}`, {
+        const res = await axios.get(`https://project-nestify-backend.onrender.com/api/messages/${roomId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setMessages(res.data);
