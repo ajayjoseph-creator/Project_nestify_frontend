@@ -9,7 +9,7 @@ export const uploadProperty = createAsyncThunk(
   async ({ formData, token }, { rejectWithValue }) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/property/add-property",
+        "https://project-nestify-backend.onrender.com/api/property/add-property",
         formData,
         {
           headers: {

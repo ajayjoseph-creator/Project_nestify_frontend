@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_BASE = "http://localhost:5000/api/property/property";
+const API_BASE = "https://project-nestify-backend.onrender.com/api/property/property";
 
 // 🔄 Async thunk to fetch property by ID
 export const fetchPropertyById = createAsyncThunk(

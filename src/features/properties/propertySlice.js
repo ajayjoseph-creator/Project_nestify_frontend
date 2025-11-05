@@ -2,7 +2,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API = "http://localhost:5000/api/property/all-properties";
+const API = "https://project-nestify-backend.onrender.com/api/property/all-properties";
 
 // 🔄 Fetch all properties with optional filters
 export const fetchAllProperties = createAsyncThunk(
