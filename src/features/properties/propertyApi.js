@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = "http://localhost:5000/api/property";
+const API_BASE = "https://project-nestify-backend.onrender.com/api/property";
 
 // 🔄 GET: All Properties (with optional filters)
 export const getAllProperties = async (filters = {}) => {
