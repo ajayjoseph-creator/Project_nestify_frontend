@@ -10,7 +10,7 @@ export const createOrder = createAsyncThunk(
       const token = localStorage.getItem("token"); // 👉 moved inside thunk
 
       const res = await axios.post(
-        "http://localhost:5000/api/users/create-order",
+        "https://project-nestify-backend.onrender.com/api/users/create-order",
         { plan: planKey },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -32,7 +32,7 @@ export const verifyPayment = createAsyncThunk(
       const token = localStorage.getItem("token"); // 👉 moved inside thunk
 
       const verifyRes = await axios.post(
-        "http://localhost:5000/api/users/verify",
+        "https://project-nestify-backend.onrender.com/api/users/verify",
         { ...response, plan: planKey, price },
         {
           headers: { Authorization: `Bearer ${token}` },
