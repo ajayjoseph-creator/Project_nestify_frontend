@@ -10,9 +10,9 @@ import {
   FaEdit,
 } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-// import PremiumModal from "./PremiumModal";
+import { useNavigate } from "react-router-dom";
 import SubscriptionStatus from "./SubscriptionStatus";
+import PremiumModal from "./PremiumModal"; // ✅ Import Modal
 
 import {
   fetchUserProfile,
@@ -76,9 +76,11 @@ const Profile = () => {
   const handleEditClick = () => {
     const sub = profile?.subscription;
     const isSubscribed =
-      sub?.active && (!sub?.nextBillingDate || new Date() < new Date(sub.nextBillingDate));
+      sub?.active &&
+      (!sub?.nextBillingDate || new Date() < new Date(sub.nextBillingDate));
+
     if (!isSubscribed) {
-      setShowModal(true);
+      setShowModal(true); // 🚫 Subscribed alla → Modal open
       return;
     }
 
@@ -89,8 +91,8 @@ const Profile = () => {
   const handleDelete = (id) => {
     dispatch(deleteProperty(id))
       .unwrap()
-      .then(() => alert("Property deleted"))
-      .catch(() => alert("Delete failed"));
+      .then(() => toast.success("Property deleted"))
+      .catch(() => toast.error("Delete failed"));
   };
 
   if (loading || !profile) {
@@ -99,7 +101,8 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-10 px-4 mt-24">
-      {/* <PremiumModal isOpen={showModal} onClose={() => setShowModal(false)} /> */}
+      {/* 🔥 Premium Modal */}
+      <PremiumModal isOpen={showModal} onClose={() => setShowModal(false)} />
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Sidebar */}

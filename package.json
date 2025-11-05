@@ -20,6 +20,8 @@
     "framer-motion": "^12.19.2",
     "gl-matrix": "^3.4.3",
     "gsap": "^3.13.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.3",
     "jwt-decode": "^4.0.0",
     "leaflet": "^1.9.4",
     "moment": "^2.30.1",
