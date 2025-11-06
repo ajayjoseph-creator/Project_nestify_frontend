@@ -22,7 +22,7 @@ export const sendOtp = createAsyncThunk(
   "auth/sendOtp",
   async (email, { rejectWithValue }) => {
     try {
-      const res = await axiosInstance.post("api/users/send-otp", { email });
+      const res = await axiosInstance.post("users/send-otp", { email });
       return res.data.otp;
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || "Failed to send OTP");
