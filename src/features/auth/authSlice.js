@@ -48,7 +48,7 @@ export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const res = await axiosInstance.post("api/users/login", { email, password });
+      const res = await axiosInstance.post("users/login", { email, password });
 
       const { user, token } = res.data;
       const isSubscribed = !!res.data.user?.subscription?.active;
