@@ -19,7 +19,7 @@ const initialState = {
 
 // ✅ Thunk: Send OTP
 export const sendOtp = createAsyncThunk(
-  "api/auth/sendOtp",
+  "auth/sendOtp",
   async (email, { rejectWithValue }) => {
     try {
       const res = await axiosInstance.post("/api/users/send-otp", { email });
