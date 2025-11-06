@@ -70,7 +70,7 @@ export const loginUser = createAsyncThunk(
 
 // ✅ Thunk: Google Login
 export const googleLogin = createAsyncThunk(
-  "api/auth/googleLogin",
+  "auth/googleLogin",
   async (token, { rejectWithValue }) => {
     try {
       const res = await axiosInstance.post("/api/users/google", { token });
