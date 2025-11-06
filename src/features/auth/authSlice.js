@@ -35,7 +35,7 @@ export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (userData, { rejectWithValue }) => {
     try {
-      await axiosInstance.post("api/users/register", userData);
+      await axiosInstance.post("users/register", userData);
       return true;
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || "Registration failed");
@@ -73,7 +73,7 @@ export const googleLogin = createAsyncThunk(
   "auth/googleLogin",
   async (token, { rejectWithValue }) => {
     try {
-      const res = await axiosInstance.post("api/users/google", { token });
+      const res = await axiosInstance.post("users/google", { token });
 
       const { user, token: accessToken } = res.data;
       const isSubscribed = !!res.data.user?.subscription?.active;
