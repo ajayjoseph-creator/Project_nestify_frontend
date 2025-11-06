@@ -19,10 +19,10 @@ const initialState = {
 
 // ✅ Thunk: Send OTP
 export const sendOtp = createAsyncThunk(
-  "auth/sendOtp",
+  "api/auth/sendOtp",
   async (email, { rejectWithValue }) => {
     try {
-      const res = await axiosInstance.post("/users/send-otp", { email });
+      const res = await axiosInstance.post("/api/users/send-otp", { email });
       return res.data.otp;
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || "Failed to send OTP");
@@ -35,7 +35,7 @@ export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (userData, { rejectWithValue }) => {
     try {
-      await axiosInstance.post("/users/register", userData);
+      await axiosInstance.post("/api/users/register", userData);
       return true;
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || "Registration failed");
@@ -48,7 +48,7 @@ export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const res = await axiosInstance.post("/users/login", { email, password });
+      const res = await axiosInstance.post("/api/users/login", { email, password });
 
       const { user, token } = res.data;
       const isSubscribed = !!res.data.user?.subscription?.active;
@@ -70,10 +70,10 @@ export const loginUser = createAsyncThunk(
 
 // ✅ Thunk: Google Login
 export const googleLogin = createAsyncThunk(
-  "auth/googleLogin",
+  "api/auth/googleLogin",
   async (token, { rejectWithValue }) => {
     try {
-      const res = await axiosInstance.post("/users/google", { token });
+      const res = await axiosInstance.post("/api/users/google", { token });
 
       const { user, token: accessToken } = res.data;
       const isSubscribed = !!res.data.user?.subscription?.active;
