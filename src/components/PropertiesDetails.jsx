@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPropertyById, clearProperty } from "../features/properties/singlePropertySlice";
 import { FiPhone } from "react-icons/fi";
 import { useAuth } from "../context/AuthContext";
+import LoadingSpinner from "./LoadingSpinner";
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -22,11 +23,9 @@ const PropertyDetails = () => {
   }, [dispatch, id]);
 
   if (loading) {
-    return (
-      <div className="text-center mt-24 text-xl font-semibold">
-        Loading property details...
-      </div>
-    );
+    return <div className="flex justify-center items-center h-64">
+        <LoadingSpinner size="large" />
+      </div>;
   }
 
   if (error || !property) {
