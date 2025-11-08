@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ChatRoomModal from "../components/ChatRoomModal";
+import LoadingSpinner from "./LoadingSpinner";
 
 const OwnerInbox = () => {
   const storedUser = localStorage.getItem("user");
@@ -47,7 +48,9 @@ const OwnerInbox = () => {
         {/* Chat list */}
         <div className="divide-y max-h-[400px] overflow-y-auto">
           {loading ? (
-            <div className="p-6 text-center text-gray-500">Loading chats...</div>
+             <div className="flex justify-center items-center h-64">
+        <LoadingSpinner size="large" />
+      </div>
           ) : conversations.length === 0 ? (
             <div className="p-6 text-center text-gray-500">No conversations yet 😕</div>
           ) : (

@@ -15,6 +15,7 @@ import {
   fetchOwnerById,
   fetchOwnerProperties,
 } from "../features/owner/ownerSlice";
+import LoadingSpinner from "./LoadingSpinner";
 
 const OwnerProfile = () => {
   const { id } = useParams();
@@ -36,7 +37,9 @@ const OwnerProfile = () => {
     }
   }, [owner, dispatch]);
 
-  if (loading || !owner) return <p className="text-center mt-20 text-lg">Loading owner profile...</p>;
+  if (loading || !owner) return <div className="flex justify-center items-center h-64">
+        <LoadingSpinner size="large" />
+      </div>;;
 
   const propertyCount = properties.length;
   const subscriptionActive = owner?.subscription?.active;

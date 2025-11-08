@@ -2,7 +2,7 @@ import React from 'react';
 
 const LoadingSpinner = ({
   size = 'medium',
-  color = 'primary',
+  color = 'green', // default light green
   className = ''
 }) => {
   const sizeClasses = {
@@ -11,15 +11,17 @@ const LoadingSpinner = ({
     large: 'h-12 w-12'
   };
   const colorClasses = {
-    primary: 'text-primary-500',
+    green: 'text-green-400', // light green
     white: 'text-white',
-    gray: 'text-gray-400'
+    gray: 'text-gray-400',
+    blue: 'text-blue-500',
+    pink: 'text-pink-400'
   };
-  
+
   return (
     <div className={`flex justify-center items-center ${className}`}>
       <svg
-        className={`animate-spin ${sizeClasses[size]} ${colorClasses[color]}`}
+        className={`animate-spin-slow ${sizeClasses[size]} ${colorClasses[color]}`}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"

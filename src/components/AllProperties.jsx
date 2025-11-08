@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import GlitchText from "./ui/Glitch";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProperties } from "../features/properties/propertySlice";
+import LoadingSpinner from "./LoadingSpinner";
 
 const AllProperties = () => {
   const dispatch = useDispatch();
@@ -89,7 +90,9 @@ const AllProperties = () => {
 
       {/* Properties Grid */}
       {loading ? (
-        <p className="text-center text-gray-500">Loading...</p>
+        <div className="flex justify-center items-center h-64">
+        <LoadingSpinner size="large" />
+      </div>
       ) : error ? (
         <p className="text-center text-red-500">Error: {error}</p>
       ) : (

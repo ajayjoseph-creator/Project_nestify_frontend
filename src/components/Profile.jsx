@@ -21,6 +21,7 @@ import {
   deleteProperty,
 } from "../features/user/userSlice";
 import { toast } from "react-toastify";
+import LoadingSpinner from "./LoadingSpinner";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -96,7 +97,9 @@ const Profile = () => {
   };
 
   if (loading || !profile) {
-    return <p className="text-center mt-24">Loading...</p>;
+    return <div className="flex justify-center items-center h-64">
+        <LoadingSpinner size="large" />
+      </div>;
   }
 
   return (
